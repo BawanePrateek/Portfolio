@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prateek Bawane – Technical Product Owner / Lead Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --bg-soft:#121833; --card:#0f1a3a; --ink:#e9eefc; --muted:#a8b3d7; --brand:#6aa8ff; --accent:#6cf3bf;
+      --ring: rgba(108,243,191,0.4);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(120deg,#0b1020 0%,#0b1328 35%,#0b1020 100%);color:var(--ink);line-height:1.55}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px}
+    header{position:sticky;top:0;background:rgba(11,16,32,0.75);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06);z-index:9}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:0.2px}
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px var(--ring)}
+    .navlinks{display:flex;gap:18px;font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),#63e3ff);color:#05121f;border:none;border-radius:12px;padding:12px 16px;font-weight:800;box-shadow:0 10px 30px rgba(108,243,191,0.18);transition:transform .2s ease, box-shadow .2s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(108,243,191,0.28)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0}
+    .hero h1{font-size:44px;line-height:1.12;margin:0 0 12px;font-weight:800}
+    .hero p.lead{font-size:18px;color:var(--muted);margin:0 0 22px}
+    .pill{display:inline-flex;gap:10px;align-items:center;background:rgba(106,168,255,0.12);border:1px solid rgba(106,168,255,0.3);color:#beddff;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px;margin-bottom:14px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+    .grid{display:grid;gap:18px}
+    .kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .kpi h3{margin:0;font-size:28px}
+    .kpi p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    section{padding:28px 0}
+    h2{font-size:24px;margin:0 0 14px}
+    .project{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+    .project + .project{margin-top:18px}
+    .mono{font-family:"JetBrains Mono",monospace;font-size:13px;color:#cfe7ff}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:6px 10px;border-radius:999px;font-size:12px}
+    .timeline{position:relative;margin-left:8px}
+    .timeline:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+    .titem{position:relative;padding-left:32px;margin:12px 0}
+    .titem:before{content:"";position:absolute;left:3px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px rgba(106,168,255,0.18)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+    .certs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .diagram{display:flex;align-items:center;justify-content:center;background:radial-gradient(1000px 600px at 50% -10%,rgba(108,243,191,.12),transparent 40%);border:1px dashed rgba(255,255,255,.15);border-radius:14px;padding:12px;min-height:220px}
+    .footer{color:var(--muted);padding:24px 0 42px}
+    .row{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .row-rev{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}
+    .note{font-size:12px;color:var(--muted)}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .project,.row,.row-rev{grid-template-columns:1fr}
+      .certs{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 560px){
+      .kpis{grid-template-columns:1fr}
+      .certs{grid-template-columns:1fr}
+    }
+	.trophy-container {
+	position: relative;
+	display:inline-block;
+	margin: 20px;
+	text-align: Center;
+	}
+	.trophy-image{
+	width: 100;
+	height: 100;
+	}
+	.trophy-link {
+	position: absolute;
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%);
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background: rgba(0, 0, 0, 0);
+	padding: 5px 10px;
+	border-radius: 8px;
+	}
+	
+.trophy-link:hover{
+color: #FFDC73;
+}
+section {
+  scroll-margin-top: 80px; <!-- Adjust based on your header height -->
+}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span> Prateek Bawane — Technical Product Owner / Lead Architect</div>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#lead">Leadership</a>
+	  <a href="#rewardNrecognition">Reward&Recognition</a>
+	  <a href="#cert">Certification</a>
+      <a href="#contact">Contact</a>
+	  <a href="#Testimonials">Testimonials</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="pill">DLC • PME (Power Monitoring Expert) • Data Center R&D</div>
+      <h1>Driving high‑density cooling & power visibility for next‑gen compute</h1>
+      <p class="lead">Lead Architect & Product Owner with hands‑on delivery across Direct Liquid Cooling (DLC), CDU software, and Power Monitoring (PME). I bridge requirements, architecture, and execution—owning roadmaps, cross‑functional alignment, and measurable outcomes.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="Prateek_Aug.pdf" download>⬇ Download Resume (PDF)</a>
+        <a class="btn ghost" href="#contact">✉ Contact</a>
+      </div>
+      <p class="note">Tip: place <span class="mono">Prateek_Aug.pdf</span> alongside this HTML when hosting, or update the link target.</p>
+    </div>
+    <div class="card">
+      <div class="grid kpis">
+        <div class="kpi">
+          <h3>150kW/ 1MW</h3>
+          <p>Rack DLC architecture (CDU + controls)</p>
+        </div>
+        <div class="kpi">
+          <h3>PME</h3>
+          <!-- <p>Gives insight into electrical system health and energy efficiency so you can make informed decisions that improve performance. </p> -->
+		  <p>Baseline energy consumption reduced by 15%, energy intensity (kWh/unit) lowered by 20%, and ISO 50001 compliance achieved.</p>
+        </div>
+        <div class="kpi">
+          <h3>30% ↓</h3>
+          <p>Cooling energy vs. baseline air‑cooled*</p>
+        </div>
+        <div class="kpi">
+          <h3>50+</h3>
+          <p>Automated test plans (Robot + Python)</p>
+        </div>
+      </div>
+      <p class="note">*Representative metrics based on lab results; tailor with verified numbers as needed.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Key Achievements</h2>
+    <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="card"><strong>DLC 1MW | 150kW | PME</strong><br/>Drafted detailed requirement specifications for pump firmware upgrade, covering boot sequence, purge cycle, autofill and bleeding operations, fail-safe mechanisms, normal mode functionality, hot-swap support and alarms and warnings.</div>
+      <div class="card"><strong>Alarm Framework</strong><br/>Defined TA/PA/PUA/SVA/ASA/LA codes with thresholds (e.g., supply/return temp/pressure, undervoltage, leak) and 0.5‑s detection for criticals.</div>
+	  <div class="card"><strong>Digital Signature</strong><br/>Designed and deployed a digital signature for executable and configuration files, enhancing software authenticity, tamper resistance, and compliance with enterprise-grade security standards.</div>
+	  <div class="card"><strong>Windows Registry</strong><br/>Integrated Windows Registry operations to enable dynamic configuration management, licensing validation, and persistent storage of application parameters, improving system flexibility and maintainability.</div>
+	  <div class="card"><strong>Threat Modeling</strong><br/>Created comprehensive threat modeling for driver installer workflows, ensuring cybersecurity compliance through risk mitigation, secure code practices, and alignment with industry standards.</div>
+      <div class="card"><strong>PME Dashboards</strong><br/>Designed and implemented a real-time dashboard featuring Vista diagrams, layered alarms and warnings, data logging, licensing and registry.</div>
+    </div>
+  </section>
+  <section>
+	<div class="Project card">
+		  <div>
+			<h3>S.R.S. Impact</h3>
+			<ul>
+			  <p>• Faster development cycles. • Clear stackholder communication. • Reduced scope creep. • Successfull product delivery.</p>
+			</ul>
+			
+			<div class="tags">
+			  <span class="tag">Stackholder Engagement</span><span class="tag">Stackholder Management</span><span class="tag">Change Request</span>
+			</div>
+		  </div></br>
+		  <div style="display:flex;gap:10px;flex-wrap:wrap">
+			<a class="btn" href="C:/Users/IN81001428/OneDrive - Friedhelm Loh Group/Documents/S.R.S" download>Software Requirement Specifications(S.R.S.)</a>
+		  </div> 
+		  
+	</div>
+  </section>
+
+  <section id="projects">
+    <h2>DLC & PME – Project Highlights</h2>
+
+    <!-- Project 1: DLC 150kW Rack Architecture -->
+    <div class="project card">
+      <div>
+        <h3>Rack‑Level DLC (150 kW) – CDU Software & Controls</h3>
+        <ul>
+          <li>Defined software specifications for <strong>Commissioning, Autofill, Bleeding, Manual, Boot, Purge, Hot Swap, Fail Safe</strong> modes.</li>
+          <li>Sensors <strong>Temperature, Pressure, Flow, Leak, Level.</strong></li>
+          <li>Condensation protection via <strong>dew point</strong> (ambient T + RH) & dynamic secondary supply setpoint.</li>
+          <li>Comprehensive alarms: <span class="mono">TA1/TA2, PA1/PA2/PA3/PA4, PUA1‑4, SVA1‑4, LA1, ASA1</span>.</li>
+          <li>Defined events and conditions that should be recorded in the log file for <strong>data logging</strong>.</li>
+		  <li><strong>Data retention </strong>is dynamically determined based on the volume of generated events and the size of each message, ensuring efficient storage and timely rollover.</li>
+		  <li><strong>Rollover mechanism</strong> with three files of 500KB each, on full capacity, oldest is deleted, others shift forward, and a new file is created at the third position to maintain continuous logging.</li>
+		  <li><strong>Test Plans</strong> tool for structured test case management.</li>
+		  
+        </ul>
+        <div class="tags">
+          <span class="tag">DLC</span><span class="tag">CDU</span><span class="tag">Sensors</span><span class="tag">Modbus/SNMP</span><span class="tag">Python</span><span class="tag">Data logging</span><span class="tag">Alarms</span>
+        </div>
+      </div>
+      <!--<div class="diagram" aria-label="DLC architecture diagram"> -->
+        <!-- Simple SVG diagram placeholder -->
+        <!--<svg width="100%" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="20" width="170" height="140" rx="10" stroke="#6cf3bf" stroke-width="2"/>
+          <text x="95" y="40" text-anchor="middle" fill="#6cf3bf" font-family="Inter" font-size="12">CDU</text>
+          <circle cx="280" cy="90" r="16" stroke="#6aa8ff" stroke-width="2"/>
+          <text x="280" y="95" text-anchor="middle" fill="#6aa8ff" font-size="10">HX</text>
+          <rect x="460" y="20" width="170" height="140" rx="10" stroke="#6cf3bf" stroke-width="2"/>
+          <text x="545" y="40" text-anchor="middle" fill="#6cf3bf" font-size="12">Rack Cold Plates</text>
+          <path d="M180 60 C220 60 240 60 260 60 L460 60" stroke="#6aa8ff" stroke-width="3" />
+          <path d="M460 120 C420 120 400 120 380 120 L180 120" stroke="#63e3ff" stroke-width="3" />
+          <text x="320" y="55" fill="#6aa8ff" font-size="10">Secondary Supply</text>
+          <text x="320" y="135" fill="#63e3ff" font-size="10">Secondary Return</text>
+          <circle cx="210" cy="120" r="6" fill="#6aa8ff"/>
+          <text x="210" y="110" fill="#a8b3d7" font-size="9" text-anchor="middle">Pump</text>
+        </svg> -->
+		<p>
+		<video width="520" height="440" controls>
+			<source src="C:/Users/IN81001428/Downloads/DLC_Media1.mp4" type="video/mp4">
+			<source src="movie.ogg" type="video/ogg">
+			Your browser does not support the video tag.
+		</video>
+		© 2025
+		<a href="https://www.rittal.com/com-en/" target="_blank">Rittal.</a>
+		All Rights Reserved. 
+		</p>
+      <!-- </div> -->
+    </div>
+
+    <!-- Project 2: PME / Power Monitoring Expert Platform -->
+    <div class="project card">
+	<p>
+	<a href="C:/Users/IN81001428/Downloads/PME - Architecture.jpg"> <img src="C:/Users/IN81001428/Downloads/PME - Architecture.jpg" alt="PME" width="450" height="275"> </a>
+	<br>© 2021 Schneider Electric. All Rights Reserved
+	</p>
+      <!-- <div class="diagram" aria-label="PME dashboard diagram">
+        <svg width="100%" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="600" height="140" rx="10" stroke="#6aa8ff" stroke-width="2"/>
+          <text x="320" y="40" text-anchor="middle" fill="#6aa8ff" font-size="12">PME – Power Monitoring Dashboard</text>
+          <rect x="40" y="60" width="140" height="80" rx="8" stroke="#6cf3bf"/><text x="110" y="98" fill="#6cf3bf" font-size="10" text-anchor="middle">Voltage / Current</text>
+          <rect x="200" y="60" width="140" height="80" rx="8" stroke="#6cf3bf"/><text x="270" y="98" fill="#6cf3bf" font-size="10" text-anchor="middle">Total Power / pPUE</text>
+          <rect x="360" y="60" width="120" height="80" rx="8" stroke="#6cf3bf"/><text x="420" y="98" fill="#6cf3bf" font-size="10" text-anchor="middle">Trends</text>
+          <rect x="500" y="60" width="100" height="80" rx="8" stroke="#6cf3bf"/><text x="550" y="98" fill="#6cf3bf" font-size="10" text-anchor="middle">Alarms</text>
+        </svg>
+      </div> -->
+      <div>
+        <h3>PME – Power Monitoring Expert</h3>
+        <ul>
+          <li>Real‑time acquisition of <strong>Voltage, Current, Total Power, Temperature, Frequency</strong>.</li>
+          <li>Alarm rules for <em>under/over‑voltage, high current, power, anomaly detection</em> linked to device load and abmient changes.</li>
+          <li>Designed vista diagrams display real-time and historical data from devices in interactive objects.</li>
+		  <li>Created registry, digital signature and license.</li>
+          <li>Data logging with a frequency of every 15 mins and time sync every 1 hour.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">EWS</span><span class="tag">OPC</span><span class="tag">Data logging</span><span class="tag">Alarms & Warnings</span><span class="tag">Time Sync</span><span class="tag">License</span><span class="tag">Digital Signature</span><span class="tag">Vista Diagram</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Test Automation / Simulator -->
+    <div class="project card">
+      <div>
+        <h3>Automation – Azure Test Plans • Python • Robot Framework</h3>
+        <ul>
+          <li>Built simulator demo kit for DLC/ASML to validate control logic before field trials.</li>
+          <li>Automated end‑to‑end test plans (50+) across pump switching, valve modulation, alarm triggers.</li>
+          <li>Static checks with <strong>Robocop</strong>; web UI automation via <strong>Browser/Selenium</strong>.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Azure Test Plans</span><span class="tag">Robot</span><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">CI/CD Pipelines</span>
+        </div>
+      </div>
+      <div class="diagram" aria-label="Automation pipeline diagram">
+        <svg width="100%" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="70" width="130" height="40" rx="8" stroke="#6aa8ff"/><text x="95" y="95" text-anchor="middle" fill="#6aa8ff" font-size="11">Specs (SRS)</text>
+          <line x1="160" y1="90" x2="220" y2="90" stroke="#6cf3bf"/>
+          <rect x="220" y="50" width="160" height="80" rx="8" stroke="#6aa8ff"/><text x="300" y="95" text-anchor="middle" fill="#6aa8ff" font-size="11">Simulator & Robot Tests</text>
+          <line x1="380" y1="90" x2="440" y2="90" stroke="#6cf3bf"/>
+          <rect x="440" y="70" width="160" height="40" rx="8" stroke="#6aa8ff"/><text x="520" y="95" text-anchor="middle" fill="#6aa8ff" font-size="11">Results Dashboard</text>
+        </svg>
+      </div>
+    </div>
+	
+	<!-- Project 4: Com'X 510/210 -->
+	<div class="project card">
+	<p>
+	<a href="C:/Users/IN81001428/Downloads/Com'X Architecture.gif"> <img src="C:/Users/IN81001428/Downloads/Com'X Architecture.gif" alt="PME" width="450" height="275"> </a>
+	<br>© 2020 Schneider Electric. All Rights Reserved
+	</p>
+      <div>
+        <h3>Com'X 210/510</h3>
+        <ul>
+          <li>Developed and integrated a custom device driver for Com'X 210/510 energy monitoring gateway, enabling communication with: <br><strong>Energy & Power Meters:</strong> EM6433H, EM6438H, PM5350P<br> <strong>Power Quality & Correction:</strong> AccuSine PCSn, PowerLogic ION7400<br> <strong>Branch Circuit Monitoring:</strong> Veris H8163-CB <br><strong>Insulation Monitoring:</strong> Vigilohm IFL12C/H <br><strong>Environmental Sensors:</strong> CL110, TH110 </li>
+          <li>Discovery of devices in the Com'X.</li>
+		  <li>Automation and CI support for the devices integrated.</li>
+          <li>Real-time data in easy to understand views.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Automation</span><span class="tag">Language translation</span><span class="tag">Data logging</span><span class="tag">Device discovery</span><span class="tag">Device view page</span><span class="tag">Configuration back-up</span><span class="tag">Data Export</span><span class="tag">Gateway</span>
+        </div>
+      </div>
+    </div>
+	
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <div class="skill">Agile Methodology</div>
+	  <div class="skill">Scrum Ceremonies</div>
+	  <div class="skill">Vission Strategy</div>
+	  <div class="skill">Stakeholder Engagement and Management</div>
+	  <div class="skill">Product Management</div>
+	  <div class="skill">Data-Driven Decision Making</div>	 
+	  <div class="skill">DLC / CDU Architecture</div>
+      <div class="skill">CI/CD Pipeline</div>
+	  <div class="skill">Digital Signature</div>
+	  <div class="skill">SRS / Architecture Docs</div>
+	  <div class="skill">Power Data Model(PDM)</div>
+      <div class="skill">Sensor & Alarms (TA/PA/PUA/SVA/ASA/LA)</div>
+      <div class="skill">PME Telemetry & Dashboards</div>
+      <div class="skill">Threat Modeling</div>
+      <div class="skill">Robot Framework</div>
+      <div class="skill">Selenium / Browser</div>
+      <div class="skill">SCADA (Modbus)</div>
+      <div class="skill">Azure Test Plans</div>
+	  <div class="skill">Release Notes</div>
+    </div>
+  </section>
+
+  <section id="lead">
+    <h2>Leadership & Ownership</h2>
+    <div class="row">
+      <div class="card">
+        <h3>End‑to‑End Ownership</h3>
+        <p>Owned backlog, requirements, design reviews, delivery, and field feedback loop. Drove cross‑functional‑team alignment (Platform, firmware, software, test) and release readiness. Lead and drove annual PME releases.</p>
+      </div>
+      <div class="card">
+        <h3>Decision Making</h3>
+        <p>Found vulnerability in installer, created threat model and sent it for PAN test. Prioritized features that improve customer experience	 and operational telemetry (PME), with rapid validation via simulator.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="titem">
+        <strong>Lead Architect | Product Owner – Cooling R&D</strong> · <span class="mono">Direct Liquid Cooling</span>
+        <div class="note">Drafted software requirement specifications for various modes, sensors and error lists</div>
+      </div>
+      <div class="titem">
+        <strong>Senior Engineer | Product Owner</strong> · <span class="mono">Power Monitoring Expert, Device driver development</span>
+        <div class="note">Delivered Samsung Lithium ION, AccuSine, Altivar, TransferPacT Active Automatic, SMDLV, Easergy P5, MV Breaker, PAC Series, Bender, PowerTag, HDPM, EM Series, PM Series, EVLink Pro AC and Uniflair Monoblock drivers.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cert">
+    <h2>Certifications</h2>
+    <div class="certs">
+      <div class="card"> <a href="https://coursera.org/verify/specialization/4GHT52H3PS5W" > Scrum Master Certification </a></div>
+      <div class="card"> <a href="https://coursera.org/verify/specialization/VQD4LUMDDLQW" > Bloackchain Revolution </a></div>
+     </div>
+  </section>
+
+  <section id="rewardNrecognition">
+	<h2>Rewards & Recognitions</h2>
+	<div class="row">
+		<div class="card">
+			<h3>Rewards</h3>
+				<a href="C:/Users/IN81001428/Downloads/Above and Beyond.jpg"> <img src="C:/Users/IN81001428/Downloads/Above and Beyond.jpg" alt="Above&Beyond" width="300" height="175"> </a>
+				<a href="C:/Users/IN81001428/Downloads/Pat_On_The_Back.jpg"> <img src="C:/Users/IN81001428/Downloads/Pat_On_The_Back.jpg" alt="PatOnTheBack" width="300" height="175"> </a>
+				
+		</div>
+		<div class="card">
+			<h3>Recognitions</h3>
+			<!--	<a href="C:/Users/IN81001428/Downloads/Com'X Recognition.pdf"><tag>Com'X</tag><img src="C:/Users/IN81001428/Downloads/trophy.png" alt="Above&Beyond" width="100" height="100"></a>
+				<a href="C:/Users/IN81001428/Downloads/Com'X McHardy OSS.pdf"><tag>Com'X</tag><img src="C:/Users/IN81001428/Downloads/trophy.png" alt="Above&Beyond" width="100" height="100"> </a>
+		</div> -->
+		<div class="trophy-container">
+		<a href="C:/Users/IN81001428/Downloads/Com'X Recognition.pdf" class="trophy-link">Com'X</br>
+			<img src="C:/Users/IN81001428/Downloads/trophy.png" alt="A&B" class="trophy-image" width="100" height="100"></a>
+				
+				</div>
+				<div class="trophy-container"></div><div class="trophy-container"></div>
+		<div class="trophy-container">
+		<a href="C:/Users/IN81001428/Downloads/Com'X McHardy OSS.pdf" class="trophy-link">Com'X OSS</br>
+			<img src="C:/Users/IN81001428/Downloads/trophy.png" alt="PonB" class="trophy-image" width="100" height="100"></a>
+				
+				</div>
+				</div>
+		</div>
+  </section>
+  <section id="Testimonials" class="hero">
+    <div>
+      <div class="pill">Testimonials</div>
+<!--      <h1>Driving high‑density cooling & power visibility for next‑gen compute</h1> -->
+      <p class="lead"><em>"Hi Prateek,</br></br>
+		I wanted to send a quick note of appreciation and recognition for the efforts done to close the McHardy OSS topic within the Com'X product. 
+		This was an important scope item for us and one that required attention to detail and timeline to ensure no further issues occurred. 
+		I truly appreciate your hard work with Clay and Jeff to bring closure to the topic on time - it is very much appreciated and both of them are extremely appreciative as well.</br></br>
+		Thanks!<br> Stephanie<br><br>
+		Harpreet - Kudos to Prateek!"</em><br><br>
+		— Stephanie C Grant, PMP<br>
+		Senior Project Manager<br>
+		Digital Power Line Of Business<br>
+		Digital Energy Division<br>
+		Schneider Electric<br><br><br>
+	  </p>
+
+
+	  <p class="lead"><em>"Congratulations Prateek on good job done.<br>
+		I do understand that this was not an easy work, and involved legal implications to solve this technical topic for ComX team. Your hard work and right questions enabled the ComX product team to fix the issue and has prevented future legal implications for ComX.<br><br>
+		Keep up the good work."</em><br><br>
+		
+		— Harpreet Singh BAMRAH<br>
+		General Manager<br> 
+		Digital Engineering<br>
+		Global Tech. Org.<br> 
+		Energy Mgmt. Business<br> 
+		Schneider Electric<br><br><br><br>
+      </p>
+	  
+	  <p class="lead"><em>"Hi Prateek,<br><br>
+		Thanks for pursuing and ensuring that this issue was well managed and communicated. Congrats! on the appreciation from project team."</em><br><br>
+		— Ravikumar BALAKRISHNA<br>
+		Software, Director<br>
+		Technical<br>
+		Schneider Electric<br><br><br><br>
+	  </p>
+	  
+	  <p class="lead"><em>"Thank you Prateek. Appreciate the effort you have put in."</em><br><br>
+		— Premraj KRISHNAKUTTY<br>
+		Global Technology India,<br>
+		Vice President<br>
+		Technical<br>
+		Energy Mgmt. & Automation Sol. Business<br> 
+		Schneider Electric<br><br><br><br>
+	  </p>
+	  
+	  <p class="lead"><em>"Harpreet,<br><br>
+		I wanted to bring to your attention that Prateek helped us to save the Com'X 210 V6.5 release.<br><br>
+		Prateek found a defect with the Com'X 210 that was untested, as the behavior differed from the Com'X 510.<br><br>
+		He leveraged the scrum process to inform the team during stand up the Monday of the Thanksgiving Holiday
+		week here in the USA, and the limited team that was here, was able to get the defect resolved before everyone was back the following week.<br><br>
+		If Prateek had not been working and found this specific issue, it would have been a major issue in the field.<br><br>
+		Prateek saved the V6.5 release.<br><br>
+		He's an excellent asset to have on the team. I appreciate his support and all of the work he does to support Com'X.<br><br>
+		Thank you,<br>
+		Darren"</em><br><br>
+		— Darren Drown<br>
+		Gateways,<br>
+		Technical Manager<br><br><br><br>
+	  </p>
+	  
+	  <p class="lead"><em>"Dear All !<br><br>
+		An excellent example set by Prateek, by walking the extra mile to find a bug which could have caused issues in ComX210 in the field.<br><br>
+		Even though his primary responsibilities are only on development, he kept his eyes open and brought this to team's notice well within time to enable a proper fix for the bug.<br><br>
+		I personally appreciate Prateek's commitment to ensure high quality releases from his end, considering that he is currently working alone on ComX development activity.<br><br>
+		This kind of dedication set's the standard for all of us Thank you Prateek for stepping up as Role Model for all of us."</em><br><br>
+		— Harpreet Singh BAMRAH<br>
+		General Manager<br> 
+		Digital Engineering<br>
+		Global Tech. Org.<br> 
+		Energy Mgmt. Business<br> 
+		Schneider Electric<br><br><br><br>
+      </p>
+	  
+	  
+	  <p class="lead"><em>"Thanks to your efforts to ensure that we do everything it takes to make sure that the release to customers is good. 
+	  Your actions demonstrates your commitment & ownership ensuring customer delight."</em><br><br>
+	  — Ravikumar BALAKRISHNA<br>
+		Software, Director<br>
+		Technical<br>
+		Schneider Electric<br><br><br><br>
+	  </p>
+	  
+	  <p class="lead"><em>"Congratulations Prateek. It shows your commitment and level of interest in the domain. 
+	  Really good to see such kind of interest and thinking from customer point of view after long time from a fresher."</em><br><br>
+	  — Vijaykumar Venkatachalam<br>
+		Software, Senior Test Campaign Leader Technical<br>
+		EcoBuilding | Digital Engineering<br>
+		India<br>
+		Building & IT Business<br>
+		Schneider Electric<br><br><br><br>
+	  </p>
+    </div>
+  </section>  
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="row-rev">
+      <div class="card">
+        <p><strong>Phone No.:</strong> 9893661997<br/>
+		<strong>Email:</strong> <a href="mailto:prateek.bawane@gmail.com">prateek.bawane@gmail.com</a><br/>
+        <strong>Location:</strong> Bengaluru, IN<br/>
+        <!-- <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/prateek-bawane-43741b79"> www.linkedin.com/in/prateek-bawane-43741b79</a></p> -->
+		<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/prateek-bawane-43741b79" target="_blank" rel="noopener noreferrer">Prateek Bawane</a>
+      </div>
+      <div class="card">
+        <h3>Download Resume</h3>
+        <p>Include the PDF next to this HTML file or update the link target.</p>
+        <!-- <a class="btn" href="Prateek_Aug.pdf" download>Download Resume (PDF)</a> -->
+		<a class="btn" href="C:/Users/IN81001428/Downloads/Prateek_Aug.pdf" download="Prateek_Resume.pdf">Download Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="footer">© <span id="y"></span> Prateek Bawane • Portfolio for Technical Product Owner / Lead Architect</div>
+</main>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
